@@ -33,7 +33,17 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          
+      - name: Verify GCP Authentication
+        run: |
+          echo "Active project:"
+          gcloud config get-value project
 
+          echo "Authenticated identity:"
+          gcloud auth list
+
+          echo "Checking Composer bucket:"
+          gcloud storage ls gs://us-central1-airflow-dev-953b3568-bucket/
       # Upload `variables.json` to Composer bucket
       - name: Upload Variables JSON to GCS
         run: |
