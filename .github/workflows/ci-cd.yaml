@@ -85,9 +85,9 @@ jobs:
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v3
         with:
-         workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER_PROD }}
-         service_account: YOUR_PROD_SERVICE_ACCOUNT
-         project_id: ${{ secrets.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER_PROD }}
+          service_account: 733119080752-compute@developer.gserviceaccount.com
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       # Setup Google Cloud SDK
       - name: Setup Google Cloud SDK
@@ -110,7 +110,7 @@ jobs:
       # Sync Spark job to GCS
       - name: Upload Spark Job to GCS
         run: |
-          gcloud storage cp spark_job/spark_transformation_job.py gs://airflow-projetcs-gds-dev-bkt/flight-booking-analysis/spark-job/
+           gcloud storage cp spark_job/spark_transformation_job.py gs://airflow-projetcs-gds-dev-bkt/flight-booking-analysis/spark-job/
 
       # Sync Airflow DAG to Airflow PROD Composer
       - name: Upload Airflow DAG to PROD Environment (Dag Folder)
