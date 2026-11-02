@@ -33,7 +33,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          
+
       - name: Verify GCP Authentication
         run: |
           echo "Active project:"
@@ -59,7 +59,8 @@ jobs:
       # Sync Spark job to GCS
       - name: Upload Spark Job to GCS
         run: |
-          gcloud storage cp spark_job/spark_transformation_job.py gs://airflow-projetcs-gds-dev/flight-booking-analysis/spark-job/
+          gcloud storage cp spark_job/spark_transformation_job.py gs://airflow-projetcs-gds-dev-bkt/flight-booking-analysis/spark-job/
+
 
       # Sync Airflow DAG to Airflow DEV Composer
       - name: Upload Airflow DAG to DEV Environment (Dag Folder)
